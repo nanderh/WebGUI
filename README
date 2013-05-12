@@ -8,6 +8,8 @@ After install run: sudo lighty-enable-mod fastcgi-php
 And for the moment add: www-data ALL=(ALL) NOPASSWD: ALL
 to /etc/sudoers. Not very safe or figure out which commands and files should be allowed and replace ALL with them.
 
-When using the lighttpd.conf the webserver is listening on port 81. This is necesarry because of the iptables port 80 traffic redirect. So feel free to use this one or any other port.
+In the /etc/default/hostapd don't change anything because otherwise it runs before the dhcp server is started which sometimes causes problems. 
 
-In the /etc/default/hostapd don't change anything because otherwise it runs before the dhcp server is started which sometimes causes problems. And check in the /configs/rc.local what to add to start it afterwards. I also added a check whether the dhcpd server is up because for some reason it wouldnt always start.
+The configs folder contains all the necessary config files.
+When using the supplied lighttpd.conf the webserver is listening on port 81. This is necesarry because of the iptables port 80 traffic redirect. So feel free to use this one or any other port.
+
