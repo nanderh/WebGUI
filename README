@@ -1,0 +1,13 @@
+Allows the raspberry pi to be deployed and accesed through hostapd and does arpspoofing and sslstrip and cleans up the results.
+Uses parselog.py to clean everything up: http://forum.intern0t.org/offensive-guides-information/2769-stealing-credentials-via-mitm-attacks-arpspoof-sslstrip-iptables.html
+
+Prerequisites: lighttpd php5-cgi dnsiff sslstrip udhcpd hostapd
+
+After install run: sudo lighty-enable-mod fastcgi-php
+
+And for the moment add: www-data ALL=(ALL) NOPASSWD: ALL
+to /etc/sudoers. Not very safe or figure out which commands and files should be allowed and replace ALL with them.
+
+When using the lighttpd.conf the webserver is listening on port 81. This is necesarry because of the iptables port 80 traffic redirect. So feel free to use this one or any other port.
+
+In the /etc/default/hostapd don't change anything because otherwise it runs before the dhcp server is started which sometimes causes problems. And check in the /configs/rc.local what to add to start it afterwards. I also added a check whether the dhcpd server is up because for some reason it wouldnt always start.
